@@ -26,6 +26,10 @@ app.use(require("./router/FollowUnFollowAuth.js"));
 //   });
 // }
 
+app.get("/", (req, res) => {
+  res.json("server started");
+});
+
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`listning At ${PORT}`);
