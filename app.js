@@ -6,7 +6,7 @@ let cors = require("cors");
 app.use(
   cors({
     credentials: true,
-    origin: "https://scary-shift-bee.cyclic.app",
+    origin: "https://celadon-kringle-01bd97.netlify.app/",
   })
 );
 dotenv.config({ path: "./config.env" });
