@@ -14,7 +14,6 @@ require("./DB/conn");
 
 app.use("/uploads", express.static("/uploads"));
 app.use(express.json());
-app.use(cors());
 
 app.use(require("./router/auth"));
 app.use(require("./router/LoginRegiAuth"));
