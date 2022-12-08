@@ -18,16 +18,19 @@ app.use(require("./router/ProfileAuth"));
 app.use(require("./router/UserProfileAuth.js"));
 app.use(require("./router/FollowUnFollowAuth.js"));
 
-// if (process.env.NODE_ENV == "production") {
-//   const path = require("path");
-//   app.use(express.static(path.join(__dirname, "./client/build")));
-//   app.get("/", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "./client/build/index.html"));
-//   });
-// }
-
-app.get("/", (req, res) => {
-  res.json("server started");
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Origin", req.headers.origin);
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept"
+  );
+  if ("OPTIONS" == req.method) {
+    res.send(200);
+  } else {
+    next();
+  }
 });
 
 const PORT = process.env.PORT;
