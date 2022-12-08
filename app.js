@@ -3,20 +3,18 @@ const express = require("express");
 const app = express();
 
 let cors = require("cors");
-
-dotenv.config({ path: "./config.env" });
-require("./DB/conn");
-
-app.use("/uploads", express.static("/uploads"));
-app.use(express.json());
-app.use(cors());
-
 app.use(
   cors({
     credentials: true,
     origin: "https://celadon-kringle-01bd97.netlify.app",
   })
 );
+dotenv.config({ path: "./config.env" });
+require("./DB/conn");
+
+app.use("/uploads", express.static("/uploads"));
+app.use(express.json());
+app.use(cors());
 
 app.use(require("./router/auth"));
 app.use(require("./router/LoginRegiAuth"));
