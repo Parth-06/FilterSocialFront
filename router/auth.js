@@ -60,7 +60,7 @@ dbn.once("open", () => {
   });
 });
 
-router.get("/home", authenticate, async (req, res) => {
+router.get("/home", async (req, res) => {
   return res.json(req.rootUser);
 });
 
